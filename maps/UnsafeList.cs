@@ -32,10 +32,10 @@ public unsafe struct NativeList<T> : IUnsafeMap<T>, IDisposable where T : unmana
     {
         T* newData = (T*)Marshal.AllocHGlobal(sizeof(T) * newCapacity);
 
-        for (int i = 0; i < length; i++)
-        {
-            newData[i] = data[i];
-        }
+        Buffer.MemoryCopy(
+            data, newData,
+            newCapacity * sizeof(T),
+            length * sizeof(T));
 
         Marshal.FreeHGlobal((IntPtr)data);
 
