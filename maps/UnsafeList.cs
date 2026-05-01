@@ -64,15 +64,15 @@ public unsafe struct UnsafeList<T> : IUnsafeMap<T>, IDisposable where T : unmana
         Capacity = newCapacity;
     }
 
-    public void Set(int index, T value)
+    public readonly void Set(int index, T value)
     {
-        if (index > Lenght)
+        if (index > Length)
             throw new IndexOutOfRangeException();
 
         *(Data + index) = value;
     }
 
-    public readonly ref T this[int index] => ref Data[index];
+    public readonly T* this[int index] => &Data[index];
 
     public readonly void CopyTo(IUnsafeMap<T> map)
     {

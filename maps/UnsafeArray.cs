@@ -34,7 +34,7 @@ public unsafe struct UnsafeArray<T> : IUnsafeMap<T>, IDisposable where T : unman
         Length = length;
     }
 
-    public readonly ref T this[int index] => ref Data[index];
+    public readonly T* this[int index] => &Data[index];
 
     public readonly void CopyTo(IUnsafeMap<T> map)
     {
