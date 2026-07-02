@@ -2,7 +2,7 @@ using System.Runtime.InteropServices;
 
 namespace unsafe_maps.maps;
 
-public unsafe struct UnsafeList<T> : IUnsafeMap<T>, IDisposable where T : unmanaged
+public unsafe struct UnsafeList<T> : IDisposable where T : unmanaged
 {
     public T* Data { get; set; }
     public int Length { get; set; }
