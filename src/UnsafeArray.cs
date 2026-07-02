@@ -1,6 +1,6 @@
 using System.Runtime.InteropServices;
 
-namespace unsafe_maps.maps;
+namespace unsafe_maps.src;
 
 public unsafe struct UnsafeArray<T> : IDisposable where T : unmanaged
 {
@@ -10,7 +10,7 @@ public unsafe struct UnsafeArray<T> : IDisposable where T : unmanaged
     public int Capacity { get; set; }
 
     public UnsafeArray(int capasity)
-    {    
+    {
         Length = 0;
         Capacity = capasity;
         Data = (T*)NativeMemory.Alloc((nuint)(sizeof(T) * capasity));
@@ -43,7 +43,7 @@ public unsafe struct UnsafeArray<T> : IDisposable where T : unmanaged
 
         if (map->Capacity < Length)
             throw new Exception("Overflow");
-            
+
         Buffer.MemoryCopy(
             Data, map->Data,
             map->Capacity * sizeof(T),

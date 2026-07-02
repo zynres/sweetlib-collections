@@ -1,6 +1,6 @@
 using System.Runtime.InteropServices;
 
-namespace unsafe_maps.maps;
+namespace unsafe_maps.src;
 
 public unsafe struct UnsafeList<T> : IDisposable where T : unmanaged
 {
@@ -46,7 +46,7 @@ public unsafe struct UnsafeList<T> : IDisposable where T : unmanaged
             (Capacity - Length) * sizeof(T),
             values.Length * sizeof(T));
 
-        Length += values.Length; 
+        Length += values.Length;
     }
 
     private void Resize(int newCapacity)
