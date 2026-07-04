@@ -44,4 +44,24 @@ public unsafe struct UnsafeHashSet<T> : IDisposable where T : unmanaged
 
         *bucket = Lenght;
     }
+
+    public void Set(uint index, in T value)
+    {
+        if (index >= Lenght)
+            throw new IndexOutOfRangeException();
+
+        int hash = value.GetHashCode();
+
+        uint bucket_index = (uint)hash % bucketCapacity;
+
+        uint?* bucket = &Bucket[bucket_index];
+
+        Slot<T>* slot = &Slot[index];
+
+        slot->Next = *bucket;
+        slot->Value = value;
+        slot->Hash = hash;
+
+        *bucket = index;
+    }
 }
