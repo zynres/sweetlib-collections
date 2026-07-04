@@ -80,4 +80,26 @@ public unsafe struct UnsafeHashSet<T> : IDisposable where T : unmanaged
 
         return ref Slot[index].Value;
     }
+
+    public readonly bool Constaint(in T value)
+    {
+        int hash = value.GetHashCode();
+        uint bucket_index = (uint)hash % bucketCapacity;
+
+        uint?* index = &Bucket[bucket_index];
+
+        while(true)
+        {
+            if (*index == null)
+                return false;
+
+            Slot<T>* slot = &Slot[index->Value];
+
+            if (slot->Value.Equals(value))
+                return true;
+
+            index = &slot->Next;
+        }
+    }
+    
 }
