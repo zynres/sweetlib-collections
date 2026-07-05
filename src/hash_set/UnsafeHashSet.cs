@@ -107,4 +107,55 @@ public unsafe struct UnsafeHashSet<T> : IDisposable where T : unmanaged
     }
     
     public readonly ref T this[uint index] => ref Get(index);
+
+    private void Resize(uint newCapacity)
+    {
+        uint newBucketCapacity = newCapacity / division;
+        Capacity = newCapacity;
+
+        Slot<T>* newSlot = (Slot<T>*)NativeMemory.Alloc((nuint)(sizeof(Slot<T>) * newCapacity));
+        uint?* newBucket = (uint?*)NativeMemory.Alloc(sizeof(uint) * newBucketCapacity);
+
+        NativeMemory.Clear(newSlot, (nuint)sizeof(Slot<T>) * newCapacity);
+        NativeMemory.Clear(newBucket, sizeof(int) * newBucketCapacity);
+
+        Buffer.MemoryCopy(
+            Slot, newSlot,
+            newCapacity * sizeof(Slot<T>),
+            Length * sizeof(Slot<T>));
+
+        NativeMemory.Free(Slot);
+        NativeMemory.Free(Bucket);
+
+        for (uint i = 0; i < Length; i++)
+        {
+            Slot<T>* slot = &newSlot[i];
+
+            uint bucket_index = (uint)slot->Hash % newBucketCapacity;
+            uint?* bucket = &newBucket[bucket_index];
+
+            slot->Next = *bucket;
+
+            *bucket = i;
+        }
+
+        Slot = newSlot;
+        Bucket = newBucket;
+        bucketCapacity = newBucketCapacity;
+    }
+
+    public void Dispose()
+    {
+        if (Bucket != null)
+        {
+            NativeMemory.Free(Bucket);
+            Bucket = null;
+        }
+
+        if (Slot != null)
+        {
+            NativeMemory.Free(Slot);
+            Slot = null;
+        }
+    }
 }
