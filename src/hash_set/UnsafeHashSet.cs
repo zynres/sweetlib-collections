@@ -8,9 +8,9 @@ public unsafe struct UnsafeHashSet<T> : IDisposable where T : unmanaged
     public Slot<T>* Slot;
 
     private uint bucketCapacity;
-    private uint division;
+    private readonly uint division;
 
-    public uint Lenght;
+    public uint Length;
     public uint Capacity;
 
     public UnsafeHashSet(uint capacity, uint division = 2)
@@ -29,25 +29,26 @@ public unsafe struct UnsafeHashSet<T> : IDisposable where T : unmanaged
 
     public void Add(in T value)
     {
-        if (Lenght >= Capacity)
+        if (Length >= Capacity)
             Resize(Capacity * 2);
 
         int hash = value.GetHashCode();
         uint bucket_index = (uint)hash % bucketCapacity;
         uint?* bucket = &Bucket[bucket_index];
 
-        Slot<T>* slot = &Slot[Lenght];
+        Slot<T>* slot = &Slot[Length];
 
         slot->Value = value;
         slot->Hash = hash;
         slot->Next = *bucket;
 
-        *bucket = Lenght;
+        *bucket = Length;
+        Length++;
     }
 
     public void Set(uint index, in T value)
     {
-        if (index >= Lenght)
+        if (index >= Length)
             throw new IndexOutOfRangeException();
 
         int hash = value.GetHashCode();
@@ -67,7 +68,7 @@ public unsafe struct UnsafeHashSet<T> : IDisposable where T : unmanaged
 
     public readonly ref T Get(uint index)
     {
-        if (index >= Lenght)
+        if (index >= Length)
             throw new IndexOutOfRangeException();
 
         return ref Slot[index].Value;
