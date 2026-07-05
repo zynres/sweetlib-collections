@@ -76,8 +76,11 @@ public unsafe struct UnsafeHashSet<T> : IDisposable where T : unmanaged
 
     public ref T Emplace(uint index)
     {
-        if (index < Capacity && index >= Lenght)
-            Lenght = index + 1;
+        if (index >= Capacity)
+            throw new ArgumentOutOfRangeException();
+            
+        if (index >= Length)
+            Length = index + 1;
 
         return ref Slot[index].Value;
     }
