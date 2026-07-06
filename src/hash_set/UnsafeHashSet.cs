@@ -51,13 +51,28 @@ public unsafe struct UnsafeHashSet<T> : IDisposable where T : unmanaged
         if (index >= Length)
             throw new IndexOutOfRangeException();
 
-        int hash = value.GetHashCode();
+        Slot<T>* slot = &Slot[index];
 
-        uint bucket_index = (uint)hash % bucketCapacity;
-
+        uint bucket_index = (uint)slot->Hash % bucketCapacity;
         uint?* bucket = &Bucket[bucket_index];
 
-        Slot<T>* slot = &Slot[index];
+        while (*bucket != null)
+        {
+            Slot<T>* linkedSlot = &Slot[bucket->Value];
+
+            if (linkedSlot == slot)
+            {    
+                *bucket = slot->Next;
+
+                break;
+            }
+
+            bucket = &linkedSlot->Next;
+        }
+
+        int hash = value.GetHashCode();
+        bucket_index = (uint)hash % bucketCapacity;
+        bucket = &Bucket[bucket_index];
 
         slot->Next = *bucket;
         slot->Value = value;
