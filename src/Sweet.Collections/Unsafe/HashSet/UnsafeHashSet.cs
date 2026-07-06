@@ -157,7 +157,7 @@ public unsafe struct UnsafeHashSet<T> : IDisposable where T : unmanaged
         bucketCapacity = newBucketCapacity;
     }
 
-    private void Init(ref Slot<T>* slot, uint capacity, ref uint* bucket, uint bucketCapacity)
+    private static void Init(ref Slot<T>* slot, uint capacity, ref uint* bucket, uint bucketCapacity)
     {
         slot = (Slot<T>*)NativeMemory.Alloc((nuint)(sizeof(Slot<T>) * capacity));
         bucket = (uint*)NativeMemory.Alloc(sizeof(uint) * bucketCapacity);

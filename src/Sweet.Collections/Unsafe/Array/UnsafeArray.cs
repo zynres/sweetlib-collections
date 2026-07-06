@@ -5,37 +5,40 @@ namespace Sweet.Collections.Unsafe.Array;
 
 public unsafe struct UnsafeArray<T> : IDisposable where T : unmanaged
 {
-    public T* Data { get; set; }
+    public T* Data;
 
-    public int Length { get; set; }
-    public int Capacity { get; set; }
+    public uint Length;
 
-    public UnsafeArray(int capasity)
+    public UnsafeArray(uint capasity)
     {
-        Length = 0;
-        Capacity = capasity;
+        Length = capasity;
         Data = (T*)NativeMemory.Alloc((nuint)(sizeof(T) * capasity));
 
-        new Span<T>(Data, capasity).Clear();
+        NativeMemory.Clear(Data, (nuint)sizeof(T) * capasity);
     }
 
-    public void Set(int index, T value)
+    public void Set(uint index, T value)
     {
-        if (index > Capacity)
+        if (index >= Length)
             throw new IndexOutOfRangeException();
 
         *(Data + index) = value;
-
-        if (index >= Length)
-            Length = index + 1;
     }
 
-    public void SetLength(int length)
+    public readonly ref T Get(uint index)
+    {
+        if (index >= Length)
+            throw new IndexOutOfRangeException();
+
+        return ref Data[index];
+    }
+
+    public readonly ref T this[uint index] => ref Get(index);
+
+    public void SetLength(uint length)
     {
         Length = length;
     }
-
-    public readonly T* this[int index] => &Data[index];
 
     public readonly void CopyTo(UnsafeList<T>* map)
     {

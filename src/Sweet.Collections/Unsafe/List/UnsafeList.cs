@@ -5,17 +5,18 @@ namespace Sweet.Collections.Unsafe.List;
 
 public unsafe struct UnsafeList<T> : IDisposable where T : unmanaged
 {
-    public T* Data { get; set; }
-    public int Length { get; set; }
-    public int Capacity { get; set; }
+    public T* Data;
 
-    public UnsafeList(int capacity)
+    public uint Length;
+    public uint Capacity;
+
+    public UnsafeList(uint capacity)
     {
         Length = 0;
         Capacity = capacity;
         Data = (T*)NativeMemory.Alloc((nuint)(sizeof(T) * capacity));
 
-        new Span<T>(Data, Capacity).Clear();
+        NativeMemory.Clear(Data, (nuint)sizeof(T) * Capacity);
     }
 
     public void Add(T value)
@@ -50,7 +51,7 @@ public unsafe struct UnsafeList<T> : IDisposable where T : unmanaged
         Length += values.Length;
     }
 
-    private void Resize(int newCapacity)
+    private void Resize(uint newCapacity)
     {
         T* newData = (T*)NativeMemory.Alloc((nuint)(sizeof(T) * newCapacity));
 
@@ -65,27 +66,35 @@ public unsafe struct UnsafeList<T> : IDisposable where T : unmanaged
         Capacity = newCapacity;
     }
 
-    public readonly void Set(int index, T value)
+    public void Set(uint index, T value)
     {
         if (index >= Length)
             throw new IndexOutOfRangeException();
 
-        *(Data + index) = value;
+        Data[index] = value;
     }
 
-    public readonly T* this[int index] => &Data[index];
+    public readonly ref T Get(uint index)
+    {
+        if (index >= Length)
+            throw new IndexOutOfRangeException();
+
+        return ref Data[index];
+    }
+
+    public readonly ref T this[uint index] => ref Get(index);
 
     public readonly void CopyTo(UnsafeArray<T>* map)
     {
         if (Data == null || map->Data == null)
             return;
 
-        if (map->Capacity < Length)
+        if (map->Length < Length)
             throw new Exception("Overflow");
 
         Buffer.MemoryCopy(
             Data, map->Data,
-            map->Capacity * sizeof(T),
+            map->Length * sizeof(T),
             Length * sizeof(T));
 
         map->Length = Length;
