@@ -31,6 +31,9 @@ public unsafe struct UnsafeHashSet<T> : IDisposable where T : unmanaged
     {
         if (Length >= Capacity)
             Resize(Capacity * 2);
+            
+        if (Constaint(in value))
+            return;
 
         int hash = value.GetHashCode();
         uint bucket_index = (uint)hash % bucketCapacity;
