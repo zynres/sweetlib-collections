@@ -8,12 +8,12 @@ public unsafe struct UnsafeHashSet<T> : IDisposable where T : unmanaged
     public Slot<T>* Slot;
 
     private uint bucketCapacity;
-    private readonly uint division;
+    private readonly byte division;
 
     public uint Length;
     public uint Capacity;
 
-    public UnsafeHashSet(uint capacity, uint division = 2)
+    public UnsafeHashSet(uint capacity, byte division = 2)
     {
         this.division = division;
 
