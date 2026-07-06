@@ -1,7 +1,7 @@
 using System.Runtime.InteropServices;
-using Sweet.Collections.List;
+using Sweet.Collections.Unsafe.List;
 
-namespace Sweet.Collections.Array;
+namespace Sweet.Collections.Unsafe.Array;
 
 public unsafe struct UnsafeArray<T> : IDisposable where T : unmanaged
 {

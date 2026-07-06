@@ -1,4 +1,4 @@
-namespace Sweet.Collections.Dictionary;
+namespace Sweet.Collections.Unsafe.Dictionary;
 
 public struct Slot<TKey, TValue> 
     where TKey : unmanaged 
