@@ -18,15 +18,13 @@ public unsafe struct UnsafeList<T> : IDisposable where T : unmanaged
         Capacity = capacity;
         Data = (T*)NativeMemory.Alloc((nuint)(sizeof(T) * capacity));
 
-        NativeMemory.Clear(Data, (nuint)sizeof(T) * Capacity);
+        NativeMemory.Clear(Data, (nuint)sizeof(T) * capacity);
     }
 
     public void Add(T value)
     {
         if (Length >= Capacity)
-        {
-            Resize(Capacity * 2);
-        }
+            Resize(Math.Max(Capacity * 2, Length + 1));
 
         Data[Length] = value;
         Length++;
@@ -55,14 +53,19 @@ public unsafe struct UnsafeList<T> : IDisposable where T : unmanaged
 
     private void Resize(uint newCapacity)
     {
+        Console.WriteLine(newCapacity);
+
         T* newData = (T*)NativeMemory.Alloc((nuint)(sizeof(T) * newCapacity));
 
-        Buffer.MemoryCopy(
-            Data, newData,
-            newCapacity * sizeof(T),
-            Length * sizeof(T));
+        if (Data != null)
+        {
+            Buffer.MemoryCopy(
+                Data, newData,
+                newCapacity * sizeof(T),
+                Length * sizeof(T));
 
-        NativeMemory.Free(Data);
+            NativeMemory.Free(Data);
+        }
 
         Data = newData;
         Capacity = newCapacity;

@@ -28,7 +28,7 @@ public unsafe struct UnsafeHashSet<T> : IDisposable where T : unmanaged
     public void Add(in T value)
     {
         if (Length >= Capacity)
-            Resize(Capacity * 2);
+            Resize(Math.Max(Capacity * 2, Length + 1));
 
         if (Constaint(in value))
             return;
@@ -62,7 +62,7 @@ public unsafe struct UnsafeHashSet<T> : IDisposable where T : unmanaged
             Slot<T>* linkedSlot = &Slot[*bucket];
 
             if (linkedSlot == slot)
-            {    
+            {
                 *bucket = slot->Next;
 
                 break;
@@ -94,7 +94,7 @@ public unsafe struct UnsafeHashSet<T> : IDisposable where T : unmanaged
     {
         if (index >= Capacity)
             throw new ArgumentOutOfRangeException();
-            
+
         if (index >= Length)
             Length = index + 1;
 
@@ -108,7 +108,7 @@ public unsafe struct UnsafeHashSet<T> : IDisposable where T : unmanaged
 
         uint* index = &Bucket[bucket_index];
 
-        while(true)
+        while (true)
         {
             if (*index == uint.MaxValue)
                 return false;
@@ -121,7 +121,7 @@ public unsafe struct UnsafeHashSet<T> : IDisposable where T : unmanaged
             index = &slot->Next;
         }
     }
-    
+
     public readonly ref T this[uint index] => ref Get(index);
 
     private void Resize(uint newCapacity)
@@ -134,10 +134,13 @@ public unsafe struct UnsafeHashSet<T> : IDisposable where T : unmanaged
 
         Init(ref newSlot, newCapacity, ref newBucket, newBucketCapacity);
 
-        Buffer.MemoryCopy(
-            Slot, newSlot,
-            newCapacity * sizeof(Slot<T>),
-            Length * sizeof(Slot<T>));
+        if (Slot != null)
+        {
+            Buffer.MemoryCopy(
+                Slot, newSlot,
+                newCapacity * sizeof(Slot<T>),
+                Length * sizeof(Slot<T>));
+        }
 
         NativeMemory.Free(Bucket);
         NativeMemory.Free(Slot);
