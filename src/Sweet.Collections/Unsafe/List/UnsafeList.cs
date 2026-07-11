@@ -38,9 +38,7 @@ public unsafe struct UnsafeList<T> : IDisposable where T : unmanaged
             throw new InvalidOperationException("self add range not supported");
 
         if (Length + values.Length >= Capacity)
-        {
             Resize(Math.Max(Capacity * 2, Length + values.Length));
-        }
 
         Buffer.MemoryCopy(
             values.Data,
@@ -53,8 +51,6 @@ public unsafe struct UnsafeList<T> : IDisposable where T : unmanaged
 
     private void Resize(uint newCapacity)
     {
-        Console.WriteLine(newCapacity);
-
         T* newData = (T*)NativeMemory.Alloc((nuint)(sizeof(T) * newCapacity));
 
         if (Data != null)
