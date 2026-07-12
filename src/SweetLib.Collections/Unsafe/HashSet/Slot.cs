@@ -1,4 +1,4 @@
-namespace Sweet.Collections.Unsafe.HashSet;
+namespace SweetLib.Collections.Unsafe.HashSet;
 
 public struct Slot<T>
 {

@@ -1,6 +1,6 @@
 // Copyright © 2026 Zynres.
 
-namespace Sweet.Collections.Unsafe.Dictionary;
+namespace SweetLib.Collections.Unsafe.Dictionary;
 
 public unsafe struct UnsafeDictionary<TKey, TValue>
     where TKey : unmanaged

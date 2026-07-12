@@ -1,9 +1,9 @@
 // Copyright © 2026 Zynres.
 
 using System.Runtime.InteropServices;
-using Sweet.Collections.Unsafe.Array;
+using SweetLib.Collections.Unsafe.Array;
 
-namespace Sweet.Collections.Unsafe.List;
+namespace SweetLib.Collections.Unsafe.List;
 
 public unsafe struct UnsafeList<T> : IDisposable where T : unmanaged
 {

@@ -2,7 +2,7 @@
 
 using System.Runtime.InteropServices;
 
-namespace Sweet.Collections.Unsafe.HashSet;
+namespace SweetLib.Collections.Unsafe.HashSet;
 
 public unsafe struct UnsafeHashSet<T> : IDisposable where T : unmanaged
 {
