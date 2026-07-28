@@ -35,6 +35,7 @@ public unsafe struct UnsafeDictionary<TKey, TValue>
         {
             Slot<TKey, TValue>* linkedSlot = &Slot[*bucket];
 
+            // memory leak if it is a duplicate key that requires cleanup.
             if (linkedSlot->Hash == hash && linkedSlot->Key.Equals(key))
                 return;
 
@@ -58,12 +59,12 @@ public unsafe struct UnsafeDictionary<TKey, TValue>
         slot->Value = value;
     }
 
-    public readonly ref TValue Get(uint index)
+    public readonly ref Slot<TKey, TValue> Get(uint index)
     {
         if (index >= Length)
             throw new IndexOutOfRangeException();
 
-        return ref Slot[index].Value;
+        return ref Slot[index];
     }
 
     public readonly ref TValue Get(in TKey key)
@@ -123,7 +124,12 @@ public unsafe struct UnsafeDictionary<TKey, TValue>
             if (*index == uint.MaxValue)
             {
                 if (Length >= Capacity)
+                {
                     Resize(Math.Max(Capacity * 2, Length + 1));
+
+                    // fix bug System.AccessViolationException
+                    index = &Bucket.Data[(uint)hash % Bucket.Capacity];
+                }
 
                 Slot<TKey, TValue>* slot = &Slot[Length];
 
@@ -137,6 +143,7 @@ public unsafe struct UnsafeDictionary<TKey, TValue>
 
             Slot<TKey, TValue>* linkedSlot = &Slot[*index];
 
+            // memory leak if it is a duplicate key that requires cleanup.
             if (linkedSlot->Hash == hash && linkedSlot->Key.Equals(key))
                 return ref linkedSlot->Value;
 
