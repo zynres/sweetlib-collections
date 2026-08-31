@@ -1,0 +1,446 @@
+// Validating benchmarks:
+// ***** BenchmarkRunner: Start   *****
+// ***** Found 9 benchmark(s) in total *****
+// ***** Building 1 exe(s) in Parallel: Start   *****
+// start dotnet  restore --nodeReuse:false /p:UseSharedCompilation=false /p:Deterministic=true /p:Optimize=true /p:ArtifactsPath="/home/zynres/Projects/sweet-log/libraries/sweetlib-collections/src/SweetLib.Benchmarks/bin/Release/net10.0/SweetLib.Benchmarks-Job-CNUJVU-1/" /p:OutDir="/home/zynres/Projects/sweet-log/libraries/sweetlib-collections/src/SweetLib.Benchmarks/bin/Release/net10.0/SweetLib.Benchmarks-Job-CNUJVU-1/bin/Release/net10.0/" /p:OutputPath="/home/zynres/Projects/sweet-log/libraries/sweetlib-collections/src/SweetLib.Benchmarks/bin/Release/net10.0/SweetLib.Benchmarks-Job-CNUJVU-1/bin/Release/net10.0/" /p:PublishDir="/home/zynres/Projects/sweet-log/libraries/sweetlib-collections/src/SweetLib.Benchmarks/bin/Release/net10.0/SweetLib.Benchmarks-Job-CNUJVU-1/publish/" in /home/zynres/Projects/sweet-log/libraries/sweetlib-collections/src/SweetLib.Benchmarks/bin/Release/net10.0/SweetLib.Benchmarks-Job-CNUJVU-1
+// command took 2.28 sec and exited with 0
+// start dotnet  build -c Release --no-restore --nodeReuse:false /p:UseSharedCompilation=false /p:Deterministic=true /p:Optimize=true /p:ArtifactsPath="/home/zynres/Projects/sweet-log/libraries/sweetlib-collections/src/SweetLib.Benchmarks/bin/Release/net10.0/SweetLib.Benchmarks-Job-CNUJVU-1/" /p:OutDir="/home/zynres/Projects/sweet-log/libraries/sweetlib-collections/src/SweetLib.Benchmarks/bin/Release/net10.0/SweetLib.Benchmarks-Job-CNUJVU-1/bin/Release/net10.0/" /p:OutputPath="/home/zynres/Projects/sweet-log/libraries/sweetlib-collections/src/SweetLib.Benchmarks/bin/Release/net10.0/SweetLib.Benchmarks-Job-CNUJVU-1/bin/Release/net10.0/" /p:PublishDir="/home/zynres/Projects/sweet-log/libraries/sweetlib-collections/src/SweetLib.Benchmarks/bin/Release/net10.0/SweetLib.Benchmarks-Job-CNUJVU-1/publish/" --output "/home/zynres/Projects/sweet-log/libraries/sweetlib-collections/src/SweetLib.Benchmarks/bin/Release/net10.0/SweetLib.Benchmarks-Job-CNUJVU-1/bin/Release/net10.0/" in /home/zynres/Projects/sweet-log/libraries/sweetlib-collections/src/SweetLib.Benchmarks/bin/Release/net10.0/SweetLib.Benchmarks-Job-CNUJVU-1
+// command took 6.92 sec and exited with 0
+// ***** Done, took 00:00:09 (9.23 sec)   *****
+// Found 9 benchmarks:
+//   MpscBenchmark.UnsafeConcurrentQueue: Job-CNUJVU(InvocationCount=1, UnrollFactor=1) [ProducerCount=1, ItemsPerProducer=100000]
+//   MpscBenchmark.UnsafeRingBuffer_MPSC: Job-CNUJVU(InvocationCount=1, UnrollFactor=1) [ProducerCount=1, ItemsPerProducer=100000]
+//   MpscBenchmark.SystemThreadingChannel_MPSC: Job-CNUJVU(InvocationCount=1, UnrollFactor=1) [ProducerCount=1, ItemsPerProducer=100000]
+//   MpscBenchmark.UnsafeConcurrentQueue: Job-CNUJVU(InvocationCount=1, UnrollFactor=1) [ProducerCount=4, ItemsPerProducer=100000]
+//   MpscBenchmark.UnsafeRingBuffer_MPSC: Job-CNUJVU(InvocationCount=1, UnrollFactor=1) [ProducerCount=4, ItemsPerProducer=100000]
+//   MpscBenchmark.SystemThreadingChannel_MPSC: Job-CNUJVU(InvocationCount=1, UnrollFactor=1) [ProducerCount=4, ItemsPerProducer=100000]
+//   MpscBenchmark.UnsafeConcurrentQueue: Job-CNUJVU(InvocationCount=1, UnrollFactor=1) [ProducerCount=8, ItemsPerProducer=100000]
+//   MpscBenchmark.UnsafeRingBuffer_MPSC: Job-CNUJVU(InvocationCount=1, UnrollFactor=1) [ProducerCount=8, ItemsPerProducer=100000]
+//   MpscBenchmark.SystemThreadingChannel_MPSC: Job-CNUJVU(InvocationCount=1, UnrollFactor=1) [ProducerCount=8, ItemsPerProducer=100000]
+
+// **************************
+// Benchmark: MpscBenchmark.UnsafeConcurrentQueue: Job-CNUJVU(InvocationCount=1, UnrollFactor=1) [ProducerCount=1, ItemsPerProducer=100000]
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet SweetLib.Benchmarks-Job-CNUJVU-1.dll --anonymousPipes 128 129 --benchmarkName "MpscBenchmark.UnsafeConcurrentQueue(ProducerCount: 1, ItemsPerProducer: 100000)" --job "InvocationCount=1, UnrollFactor=1" --benchmarkId 0 in /home/zynres/Projects/sweet-log/libraries/sweetlib-collections/src/SweetLib.Benchmarks/bin/Release/net10.0/SweetLib.Benchmarks-Job-CNUJVU-1/bin/Release/net10.0
+// Failed to set up high priority (Permission denied). In order to run benchmarks with high priority, make sure you have the right permissions.
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.15.8
+// Runtime=.NET 10.0.11 (10.0.11, 42.42.42.42424), X64 RyuJIT x86-64-v3
+// GC=Concurrent Workstation
+// HardwareIntrinsics=AVX2+BMI1+BMI2+F16C+FMA+LZCNT+MOVBE,AVX,SSE3+SSSE3+SSE4.1+SSE4.2+POPCNT,X86Base+SSE+SSE2,AES+PCLMUL,AvxVnni,SERIALIZE VectorSize=256
+// Job: Job-CNUJVU(InvocationCount=1, UnrollFactor=1)
+
+OverheadJitting  1: 1 op, 131810.00 ns, 131.8100 us/op
+
+System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation.
+ ---> System.ArgumentException: Capacity must be a power of 2
+   at MpscUnsafeRingBuffer`1..ctor(UInt32 powerOfTwoCapacity) in /home/zynres/Projects/sweet-log/libraries/sweetlib-collections/src/SweetLib.Benchmarks/Program.cs:line 187
+   at MpscBenchmark.Setup() in /home/zynres/Projects/sweet-log/libraries/sweetlib-collections/src/SweetLib.Benchmarks/Program.cs:line 27
+   at BenchmarkDotNet.Engines.Engine.RunIteration(IterationData data)
+   at BenchmarkDotNet.Engines.EngineFactory.Jit(Engine engine, Int32 jitIndex, Int32 invokeCount, Int32 unrollFactor)
+   at BenchmarkDotNet.Engines.EngineFactory.CreateReadyToRun(EngineParameters engineParameters)
+   at BenchmarkDotNet.Autogenerated.Runnable_0.Run(IHost host, String benchmarkName) in /home/zynres/Projects/sweet-log/libraries/sweetlib-collections/src/SweetLib.Benchmarks/bin/Release/net10.0/SweetLib.Benchmarks-Job-CNUJVU-1/SweetLib.Benchmarks-Job-CNUJVU-1.notcs:line 177
+   at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+   --- End of inner exception stack trace ---
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at BenchmarkDotNet.Autogenerated.UniqueProgramName.AfterAssemblyLoadingAttached(String[] args) in /home/zynres/Projects/sweet-log/libraries/sweetlib-collections/src/SweetLib.Benchmarks/bin/Release/net10.0/SweetLib.Benchmarks-Job-CNUJVU-1/SweetLib.Benchmarks-Job-CNUJVU-1.notcs:line 57
+// AfterAll
+No Workload Results were obtained from the run.
+// Benchmark Process 204461 has exited with code 255.
+
+// ** Remained 8 (88.9 %) benchmark(s) to run. Estimated finish 2026-08-31 21:32 (0h 0m from now) **
+// **************************
+// Benchmark: MpscBenchmark.UnsafeRingBuffer_MPSC: Job-CNUJVU(InvocationCount=1, UnrollFactor=1) [ProducerCount=1, ItemsPerProducer=100000]
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet SweetLib.Benchmarks-Job-CNUJVU-1.dll --anonymousPipes 128 129 --benchmarkName "MpscBenchmark.UnsafeRingBuffer_MPSC(ProducerCount: 1, ItemsPerProducer: 100000)" --job "InvocationCount=1, UnrollFactor=1" --benchmarkId 1 in /home/zynres/Projects/sweet-log/libraries/sweetlib-collections/src/SweetLib.Benchmarks/bin/Release/net10.0/SweetLib.Benchmarks-Job-CNUJVU-1/bin/Release/net10.0
+// Failed to set up high priority (Permission denied). In order to run benchmarks with high priority, make sure you have the right permissions.
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.15.8
+// Runtime=.NET 10.0.11 (10.0.11, 42.42.42.42424), X64 RyuJIT x86-64-v3
+// GC=Concurrent Workstation
+// HardwareIntrinsics=AVX2+BMI1+BMI2+F16C+FMA+LZCNT+MOVBE,AVX,SSE3+SSSE3+SSE4.1+SSE4.2+POPCNT,X86Base+SSE+SSE2,AES+PCLMUL,AvxVnni,SERIALIZE VectorSize=256
+// Job: Job-CNUJVU(InvocationCount=1, UnrollFactor=1)
+
+OverheadJitting  1: 1 op, 126201.00 ns, 126.2010 us/op
+
+System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation.
+ ---> System.ArgumentException: Capacity must be a power of 2
+   at MpscUnsafeRingBuffer`1..ctor(UInt32 powerOfTwoCapacity) in /home/zynres/Projects/sweet-log/libraries/sweetlib-collections/src/SweetLib.Benchmarks/Program.cs:line 187
+   at MpscBenchmark.Setup() in /home/zynres/Projects/sweet-log/libraries/sweetlib-collections/src/SweetLib.Benchmarks/Program.cs:line 27
+   at BenchmarkDotNet.Engines.Engine.RunIteration(IterationData data)
+   at BenchmarkDotNet.Engines.EngineFactory.Jit(Engine engine, Int32 jitIndex, Int32 invokeCount, Int32 unrollFactor)
+   at BenchmarkDotNet.Engines.EngineFactory.CreateReadyToRun(EngineParameters engineParameters)
+   at BenchmarkDotNet.Autogenerated.Runnable_1.Run(IHost host, String benchmarkName) in /home/zynres/Projects/sweet-log/libraries/sweetlib-collections/src/SweetLib.Benchmarks/bin/Release/net10.0/SweetLib.Benchmarks-Job-CNUJVU-1/SweetLib.Benchmarks-Job-CNUJVU-1.notcs:line 340
+   at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+   --- End of inner exception stack trace ---
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at BenchmarkDotNet.Autogenerated.UniqueProgramName.AfterAssemblyLoadingAttached(String[] args) in /home/zynres/Projects/sweet-log/libraries/sweetlib-collections/src/SweetLib.Benchmarks/bin/Release/net10.0/SweetLib.Benchmarks-Job-CNUJVU-1/SweetLib.Benchmarks-Job-CNUJVU-1.notcs:line 57
+// AfterAll
+No Workload Results were obtained from the run.
+// Benchmark Process 204469 has exited with code 255.
+
+// ** Remained 7 (77.8 %) benchmark(s) to run. Estimated finish 2026-08-31 21:32 (0h 0m from now) **
+// **************************
+// Benchmark: MpscBenchmark.SystemThreadingChannel_MPSC: Job-CNUJVU(InvocationCount=1, UnrollFactor=1) [ProducerCount=1, ItemsPerProducer=100000]
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet SweetLib.Benchmarks-Job-CNUJVU-1.dll --anonymousPipes 128 129 --benchmarkName "MpscBenchmark.SystemThreadingChannel_MPSC(ProducerCount: 1, ItemsPerProducer: 100000)" --job "InvocationCount=1, UnrollFactor=1" --benchmarkId 2 in /home/zynres/Projects/sweet-log/libraries/sweetlib-collections/src/SweetLib.Benchmarks/bin/Release/net10.0/SweetLib.Benchmarks-Job-CNUJVU-1/bin/Release/net10.0
+// Failed to set up high priority (Permission denied). In order to run benchmarks with high priority, make sure you have the right permissions.
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.15.8
+// Runtime=.NET 10.0.11 (10.0.11, 42.42.42.42424), X64 RyuJIT x86-64-v3
+// GC=Concurrent Workstation
+// HardwareIntrinsics=AVX2+BMI1+BMI2+F16C+FMA+LZCNT+MOVBE,AVX,SSE3+SSSE3+SSE4.1+SSE4.2+POPCNT,X86Base+SSE+SSE2,AES+PCLMUL,AvxVnni,SERIALIZE VectorSize=256
+// Job: Job-CNUJVU(InvocationCount=1, UnrollFactor=1)
+
+OverheadJitting  1: 1 op, 126558.00 ns, 126.5580 us/op
+
+System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation.
+ ---> System.ArgumentException: Capacity must be a power of 2
+   at MpscUnsafeRingBuffer`1..ctor(UInt32 powerOfTwoCapacity) in /home/zynres/Projects/sweet-log/libraries/sweetlib-collections/src/SweetLib.Benchmarks/Program.cs:line 187
+   at MpscBenchmark.Setup() in /home/zynres/Projects/sweet-log/libraries/sweetlib-collections/src/SweetLib.Benchmarks/Program.cs:line 27
+   at BenchmarkDotNet.Engines.Engine.RunIteration(IterationData data)
+   at BenchmarkDotNet.Engines.EngineFactory.Jit(Engine engine, Int32 jitIndex, Int32 invokeCount, Int32 unrollFactor)
+   at BenchmarkDotNet.Engines.EngineFactory.CreateReadyToRun(EngineParameters engineParameters)
+   at BenchmarkDotNet.Autogenerated.Runnable_2.Run(IHost host, String benchmarkName) in /home/zynres/Projects/sweet-log/libraries/sweetlib-collections/src/SweetLib.Benchmarks/bin/Release/net10.0/SweetLib.Benchmarks-Job-CNUJVU-1/SweetLib.Benchmarks-Job-CNUJVU-1.notcs:line 503
+   at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+   --- End of inner exception stack trace ---
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at BenchmarkDotNet.Autogenerated.UniqueProgramName.AfterAssemblyLoadingAttached(String[] args) in /home/zynres/Projects/sweet-log/libraries/sweetlib-collections/src/SweetLib.Benchmarks/bin/Release/net10.0/SweetLib.Benchmarks-Job-CNUJVU-1/SweetLib.Benchmarks-Job-CNUJVU-1.notcs:line 57
+// AfterAll
+No Workload Results were obtained from the run.
+// Benchmark Process 204477 has exited with code 255.
+
+// ** Remained 6 (66.7 %) benchmark(s) to run. Estimated finish 2026-08-31 21:32 (0h 0m from now) **
+// **************************
+// Benchmark: MpscBenchmark.UnsafeConcurrentQueue: Job-CNUJVU(InvocationCount=1, UnrollFactor=1) [ProducerCount=4, ItemsPerProducer=100000]
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet SweetLib.Benchmarks-Job-CNUJVU-1.dll --anonymousPipes 128 129 --benchmarkName "MpscBenchmark.UnsafeConcurrentQueue(ProducerCount: 4, ItemsPerProducer: 100000)" --job "InvocationCount=1, UnrollFactor=1" --benchmarkId 3 in /home/zynres/Projects/sweet-log/libraries/sweetlib-collections/src/SweetLib.Benchmarks/bin/Release/net10.0/SweetLib.Benchmarks-Job-CNUJVU-1/bin/Release/net10.0
+// Failed to set up high priority (Permission denied). In order to run benchmarks with high priority, make sure you have the right permissions.
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.15.8
+// Runtime=.NET 10.0.11 (10.0.11, 42.42.42.42424), X64 RyuJIT x86-64-v3
+// GC=Concurrent Workstation
+// HardwareIntrinsics=AVX2+BMI1+BMI2+F16C+FMA+LZCNT+MOVBE,AVX,SSE3+SSSE3+SSE4.1+SSE4.2+POPCNT,X86Base+SSE+SSE2,AES+PCLMUL,AvxVnni,SERIALIZE VectorSize=256
+// Job: Job-CNUJVU(InvocationCount=1, UnrollFactor=1)
+
+OverheadJitting  1: 1 op, 136229.00 ns, 136.2290 us/op
+
+System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation.
+ ---> System.ArgumentException: Capacity must be a power of 2
+   at MpscUnsafeRingBuffer`1..ctor(UInt32 powerOfTwoCapacity) in /home/zynres/Projects/sweet-log/libraries/sweetlib-collections/src/SweetLib.Benchmarks/Program.cs:line 187
+   at MpscBenchmark.Setup() in /home/zynres/Projects/sweet-log/libraries/sweetlib-collections/src/SweetLib.Benchmarks/Program.cs:line 27
+   at BenchmarkDotNet.Engines.Engine.RunIteration(IterationData data)
+   at BenchmarkDotNet.Engines.EngineFactory.Jit(Engine engine, Int32 jitIndex, Int32 invokeCount, Int32 unrollFactor)
+   at BenchmarkDotNet.Engines.EngineFactory.CreateReadyToRun(EngineParameters engineParameters)
+   at BenchmarkDotNet.Autogenerated.Runnable_3.Run(IHost host, String benchmarkName) in /home/zynres/Projects/sweet-log/libraries/sweetlib-collections/src/SweetLib.Benchmarks/bin/Release/net10.0/SweetLib.Benchmarks-Job-CNUJVU-1/SweetLib.Benchmarks-Job-CNUJVU-1.notcs:line 666
+   at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+   --- End of inner exception stack trace ---
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at BenchmarkDotNet.Autogenerated.UniqueProgramName.AfterAssemblyLoadingAttached(String[] args) in /home/zynres/Projects/sweet-log/libraries/sweetlib-collections/src/SweetLib.Benchmarks/bin/Release/net10.0/SweetLib.Benchmarks-Job-CNUJVU-1/SweetLib.Benchmarks-Job-CNUJVU-1.notcs:line 57
+// AfterAll
+No Workload Results were obtained from the run.
+// Benchmark Process 204484 has exited with code 255.
+
+// ** Remained 5 (55.6 %) benchmark(s) to run. Estimated finish 2026-08-31 21:32 (0h 0m from now) **
+// **************************
+// Benchmark: MpscBenchmark.UnsafeRingBuffer_MPSC: Job-CNUJVU(InvocationCount=1, UnrollFactor=1) [ProducerCount=4, ItemsPerProducer=100000]
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet SweetLib.Benchmarks-Job-CNUJVU-1.dll --anonymousPipes 128 129 --benchmarkName "MpscBenchmark.UnsafeRingBuffer_MPSC(ProducerCount: 4, ItemsPerProducer: 100000)" --job "InvocationCount=1, UnrollFactor=1" --benchmarkId 4 in /home/zynres/Projects/sweet-log/libraries/sweetlib-collections/src/SweetLib.Benchmarks/bin/Release/net10.0/SweetLib.Benchmarks-Job-CNUJVU-1/bin/Release/net10.0
+// Failed to set up high priority (Permission denied). In order to run benchmarks with high priority, make sure you have the right permissions.
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.15.8
+// Runtime=.NET 10.0.11 (10.0.11, 42.42.42.42424), X64 RyuJIT x86-64-v3
+// GC=Concurrent Workstation
+// HardwareIntrinsics=AVX2+BMI1+BMI2+F16C+FMA+LZCNT+MOVBE,AVX,SSE3+SSSE3+SSE4.1+SSE4.2+POPCNT,X86Base+SSE+SSE2,AES+PCLMUL,AvxVnni,SERIALIZE VectorSize=256
+// Job: Job-CNUJVU(InvocationCount=1, UnrollFactor=1)
+
+OverheadJitting  1: 1 op, 126839.00 ns, 126.8390 us/op
+
+System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation.
+ ---> System.ArgumentException: Capacity must be a power of 2
+   at MpscUnsafeRingBuffer`1..ctor(UInt32 powerOfTwoCapacity) in /home/zynres/Projects/sweet-log/libraries/sweetlib-collections/src/SweetLib.Benchmarks/Program.cs:line 187
+   at MpscBenchmark.Setup() in /home/zynres/Projects/sweet-log/libraries/sweetlib-collections/src/SweetLib.Benchmarks/Program.cs:line 27
+   at BenchmarkDotNet.Engines.Engine.RunIteration(IterationData data)
+   at BenchmarkDotNet.Engines.EngineFactory.Jit(Engine engine, Int32 jitIndex, Int32 invokeCount, Int32 unrollFactor)
+   at BenchmarkDotNet.Engines.EngineFactory.CreateReadyToRun(EngineParameters engineParameters)
+   at BenchmarkDotNet.Autogenerated.Runnable_4.Run(IHost host, String benchmarkName) in /home/zynres/Projects/sweet-log/libraries/sweetlib-collections/src/SweetLib.Benchmarks/bin/Release/net10.0/SweetLib.Benchmarks-Job-CNUJVU-1/SweetLib.Benchmarks-Job-CNUJVU-1.notcs:line 829
+   at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+   --- End of inner exception stack trace ---
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at BenchmarkDotNet.Autogenerated.UniqueProgramName.AfterAssemblyLoadingAttached(String[] args) in /home/zynres/Projects/sweet-log/libraries/sweetlib-collections/src/SweetLib.Benchmarks/bin/Release/net10.0/SweetLib.Benchmarks-Job-CNUJVU-1/SweetLib.Benchmarks-Job-CNUJVU-1.notcs:line 57
+// AfterAll
+No Workload Results were obtained from the run.
+// Benchmark Process 204492 has exited with code 255.
+
+// ** Remained 4 (44.4 %) benchmark(s) to run. Estimated finish 2026-08-31 21:32 (0h 0m from now) **
+// **************************
+// Benchmark: MpscBenchmark.SystemThreadingChannel_MPSC: Job-CNUJVU(InvocationCount=1, UnrollFactor=1) [ProducerCount=4, ItemsPerProducer=100000]
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet SweetLib.Benchmarks-Job-CNUJVU-1.dll --anonymousPipes 128 129 --benchmarkName "MpscBenchmark.SystemThreadingChannel_MPSC(ProducerCount: 4, ItemsPerProducer: 100000)" --job "InvocationCount=1, UnrollFactor=1" --benchmarkId 5 in /home/zynres/Projects/sweet-log/libraries/sweetlib-collections/src/SweetLib.Benchmarks/bin/Release/net10.0/SweetLib.Benchmarks-Job-CNUJVU-1/bin/Release/net10.0
+// Failed to set up high priority (Permission denied). In order to run benchmarks with high priority, make sure you have the right permissions.
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.15.8
+// Runtime=.NET 10.0.11 (10.0.11, 42.42.42.42424), X64 RyuJIT x86-64-v3
+// GC=Concurrent Workstation
+// HardwareIntrinsics=AVX2+BMI1+BMI2+F16C+FMA+LZCNT+MOVBE,AVX,SSE3+SSSE3+SSE4.1+SSE4.2+POPCNT,X86Base+SSE+SSE2,AES+PCLMUL,AvxVnni,SERIALIZE VectorSize=256
+// Job: Job-CNUJVU(InvocationCount=1, UnrollFactor=1)
+
+OverheadJitting  1: 1 op, 153007.00 ns, 153.0070 us/op
+
+System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation.
+ ---> System.ArgumentException: Capacity must be a power of 2
+   at MpscUnsafeRingBuffer`1..ctor(UInt32 powerOfTwoCapacity) in /home/zynres/Projects/sweet-log/libraries/sweetlib-collections/src/SweetLib.Benchmarks/Program.cs:line 187
+   at MpscBenchmark.Setup() in /home/zynres/Projects/sweet-log/libraries/sweetlib-collections/src/SweetLib.Benchmarks/Program.cs:line 27
+   at BenchmarkDotNet.Engines.Engine.RunIteration(IterationData data)
+   at BenchmarkDotNet.Engines.EngineFactory.Jit(Engine engine, Int32 jitIndex, Int32 invokeCount, Int32 unrollFactor)
+   at BenchmarkDotNet.Engines.EngineFactory.CreateReadyToRun(EngineParameters engineParameters)
+   at BenchmarkDotNet.Autogenerated.Runnable_5.Run(IHost host, String benchmarkName) in /home/zynres/Projects/sweet-log/libraries/sweetlib-collections/src/SweetLib.Benchmarks/bin/Release/net10.0/SweetLib.Benchmarks-Job-CNUJVU-1/SweetLib.Benchmarks-Job-CNUJVU-1.notcs:line 992
+   at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+   --- End of inner exception stack trace ---
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at BenchmarkDotNet.Autogenerated.UniqueProgramName.AfterAssemblyLoadingAttached(String[] args) in /home/zynres/Projects/sweet-log/libraries/sweetlib-collections/src/SweetLib.Benchmarks/bin/Release/net10.0/SweetLib.Benchmarks-Job-CNUJVU-1/SweetLib.Benchmarks-Job-CNUJVU-1.notcs:line 57
+// AfterAll
+No Workload Results were obtained from the run.
+// Benchmark Process 204499 has exited with code 255.
+
+// ** Remained 3 (33.3 %) benchmark(s) to run. Estimated finish 2026-08-31 21:32 (0h 0m from now) **
+// **************************
+// Benchmark: MpscBenchmark.UnsafeConcurrentQueue: Job-CNUJVU(InvocationCount=1, UnrollFactor=1) [ProducerCount=8, ItemsPerProducer=100000]
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet SweetLib.Benchmarks-Job-CNUJVU-1.dll --anonymousPipes 128 129 --benchmarkName "MpscBenchmark.UnsafeConcurrentQueue(ProducerCount: 8, ItemsPerProducer: 100000)" --job "InvocationCount=1, UnrollFactor=1" --benchmarkId 6 in /home/zynres/Projects/sweet-log/libraries/sweetlib-collections/src/SweetLib.Benchmarks/bin/Release/net10.0/SweetLib.Benchmarks-Job-CNUJVU-1/bin/Release/net10.0
+// Failed to set up high priority (Permission denied). In order to run benchmarks with high priority, make sure you have the right permissions.
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.15.8
+// Runtime=.NET 10.0.11 (10.0.11, 42.42.42.42424), X64 RyuJIT x86-64-v3
+// GC=Concurrent Workstation
+// HardwareIntrinsics=AVX2+BMI1+BMI2+F16C+FMA+LZCNT+MOVBE,AVX,SSE3+SSSE3+SSE4.1+SSE4.2+POPCNT,X86Base+SSE+SSE2,AES+PCLMUL,AvxVnni,SERIALIZE VectorSize=256
+// Job: Job-CNUJVU(InvocationCount=1, UnrollFactor=1)
+
+OverheadJitting  1: 1 op, 135285.00 ns, 135.2850 us/op
+
+System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation.
+ ---> System.ArgumentException: Capacity must be a power of 2
+   at MpscUnsafeRingBuffer`1..ctor(UInt32 powerOfTwoCapacity) in /home/zynres/Projects/sweet-log/libraries/sweetlib-collections/src/SweetLib.Benchmarks/Program.cs:line 187
+   at MpscBenchmark.Setup() in /home/zynres/Projects/sweet-log/libraries/sweetlib-collections/src/SweetLib.Benchmarks/Program.cs:line 27
+   at BenchmarkDotNet.Engines.Engine.RunIteration(IterationData data)
+   at BenchmarkDotNet.Engines.EngineFactory.Jit(Engine engine, Int32 jitIndex, Int32 invokeCount, Int32 unrollFactor)
+   at BenchmarkDotNet.Engines.EngineFactory.CreateReadyToRun(EngineParameters engineParameters)
+   at BenchmarkDotNet.Autogenerated.Runnable_6.Run(IHost host, String benchmarkName) in /home/zynres/Projects/sweet-log/libraries/sweetlib-collections/src/SweetLib.Benchmarks/bin/Release/net10.0/SweetLib.Benchmarks-Job-CNUJVU-1/SweetLib.Benchmarks-Job-CNUJVU-1.notcs:line 1155
+   at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+   --- End of inner exception stack trace ---
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at BenchmarkDotNet.Autogenerated.UniqueProgramName.AfterAssemblyLoadingAttached(String[] args) in /home/zynres/Projects/sweet-log/libraries/sweetlib-collections/src/SweetLib.Benchmarks/bin/Release/net10.0/SweetLib.Benchmarks-Job-CNUJVU-1/SweetLib.Benchmarks-Job-CNUJVU-1.notcs:line 57
+// AfterAll
+No Workload Results were obtained from the run.
+// Benchmark Process 204507 has exited with code 255.
+
+// ** Remained 2 (22.2 %) benchmark(s) to run. Estimated finish 2026-08-31 21:32 (0h 0m from now) **
+// **************************
+// Benchmark: MpscBenchmark.UnsafeRingBuffer_MPSC: Job-CNUJVU(InvocationCount=1, UnrollFactor=1) [ProducerCount=8, ItemsPerProducer=100000]
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet SweetLib.Benchmarks-Job-CNUJVU-1.dll --anonymousPipes 128 129 --benchmarkName "MpscBenchmark.UnsafeRingBuffer_MPSC(ProducerCount: 8, ItemsPerProducer: 100000)" --job "InvocationCount=1, UnrollFactor=1" --benchmarkId 7 in /home/zynres/Projects/sweet-log/libraries/sweetlib-collections/src/SweetLib.Benchmarks/bin/Release/net10.0/SweetLib.Benchmarks-Job-CNUJVU-1/bin/Release/net10.0
+// Failed to set up high priority (Permission denied). In order to run benchmarks with high priority, make sure you have the right permissions.
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.15.8
+// Runtime=.NET 10.0.11 (10.0.11, 42.42.42.42424), X64 RyuJIT x86-64-v3
+// GC=Concurrent Workstation
+// HardwareIntrinsics=AVX2+BMI1+BMI2+F16C+FMA+LZCNT+MOVBE,AVX,SSE3+SSSE3+SSE4.1+SSE4.2+POPCNT,X86Base+SSE+SSE2,AES+PCLMUL,AvxVnni,SERIALIZE VectorSize=256
+// Job: Job-CNUJVU(InvocationCount=1, UnrollFactor=1)
+
+OverheadJitting  1: 1 op, 143893.00 ns, 143.8930 us/op
+
+System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation.
+ ---> System.ArgumentException: Capacity must be a power of 2
+   at MpscUnsafeRingBuffer`1..ctor(UInt32 powerOfTwoCapacity) in /home/zynres/Projects/sweet-log/libraries/sweetlib-collections/src/SweetLib.Benchmarks/Program.cs:line 187
+   at MpscBenchmark.Setup() in /home/zynres/Projects/sweet-log/libraries/sweetlib-collections/src/SweetLib.Benchmarks/Program.cs:line 27
+   at BenchmarkDotNet.Engines.Engine.RunIteration(IterationData data)
+   at BenchmarkDotNet.Engines.EngineFactory.Jit(Engine engine, Int32 jitIndex, Int32 invokeCount, Int32 unrollFactor)
+   at BenchmarkDotNet.Engines.EngineFactory.CreateReadyToRun(EngineParameters engineParameters)
+   at BenchmarkDotNet.Autogenerated.Runnable_7.Run(IHost host, String benchmarkName) in /home/zynres/Projects/sweet-log/libraries/sweetlib-collections/src/SweetLib.Benchmarks/bin/Release/net10.0/SweetLib.Benchmarks-Job-CNUJVU-1/SweetLib.Benchmarks-Job-CNUJVU-1.notcs:line 1318
+   at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+   --- End of inner exception stack trace ---
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at BenchmarkDotNet.Autogenerated.UniqueProgramName.AfterAssemblyLoadingAttached(String[] args) in /home/zynres/Projects/sweet-log/libraries/sweetlib-collections/src/SweetLib.Benchmarks/bin/Release/net10.0/SweetLib.Benchmarks-Job-CNUJVU-1/SweetLib.Benchmarks-Job-CNUJVU-1.notcs:line 57
+// AfterAll
+No Workload Results were obtained from the run.
+// Benchmark Process 204514 has exited with code 255.
+
+// ** Remained 1 (11.1 %) benchmark(s) to run. Estimated finish 2026-08-31 21:32 (0h 0m from now) **
+// **************************
+// Benchmark: MpscBenchmark.SystemThreadingChannel_MPSC: Job-CNUJVU(InvocationCount=1, UnrollFactor=1) [ProducerCount=8, ItemsPerProducer=100000]
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet SweetLib.Benchmarks-Job-CNUJVU-1.dll --anonymousPipes 128 129 --benchmarkName "MpscBenchmark.SystemThreadingChannel_MPSC(ProducerCount: 8, ItemsPerProducer: 100000)" --job "InvocationCount=1, UnrollFactor=1" --benchmarkId 8 in /home/zynres/Projects/sweet-log/libraries/sweetlib-collections/src/SweetLib.Benchmarks/bin/Release/net10.0/SweetLib.Benchmarks-Job-CNUJVU-1/bin/Release/net10.0
+// Failed to set up high priority (Permission denied). In order to run benchmarks with high priority, make sure you have the right permissions.
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.15.8
+// Runtime=.NET 10.0.11 (10.0.11, 42.42.42.42424), X64 RyuJIT x86-64-v3
+// GC=Concurrent Workstation
+// HardwareIntrinsics=AVX2+BMI1+BMI2+F16C+FMA+LZCNT+MOVBE,AVX,SSE3+SSSE3+SSE4.1+SSE4.2+POPCNT,X86Base+SSE+SSE2,AES+PCLMUL,AvxVnni,SERIALIZE VectorSize=256
+// Job: Job-CNUJVU(InvocationCount=1, UnrollFactor=1)
+
+OverheadJitting  1: 1 op, 128293.00 ns, 128.2930 us/op
+
+System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation.
+ ---> System.ArgumentException: Capacity must be a power of 2
+   at MpscUnsafeRingBuffer`1..ctor(UInt32 powerOfTwoCapacity) in /home/zynres/Projects/sweet-log/libraries/sweetlib-collections/src/SweetLib.Benchmarks/Program.cs:line 187
+   at MpscBenchmark.Setup() in /home/zynres/Projects/sweet-log/libraries/sweetlib-collections/src/SweetLib.Benchmarks/Program.cs:line 27
+   at BenchmarkDotNet.Engines.Engine.RunIteration(IterationData data)
+   at BenchmarkDotNet.Engines.EngineFactory.Jit(Engine engine, Int32 jitIndex, Int32 invokeCount, Int32 unrollFactor)
+   at BenchmarkDotNet.Engines.EngineFactory.CreateReadyToRun(EngineParameters engineParameters)
+   at BenchmarkDotNet.Autogenerated.Runnable_8.Run(IHost host, String benchmarkName) in /home/zynres/Projects/sweet-log/libraries/sweetlib-collections/src/SweetLib.Benchmarks/bin/Release/net10.0/SweetLib.Benchmarks-Job-CNUJVU-1/SweetLib.Benchmarks-Job-CNUJVU-1.notcs:line 1481
+   at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+   --- End of inner exception stack trace ---
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at BenchmarkDotNet.Autogenerated.UniqueProgramName.AfterAssemblyLoadingAttached(String[] args) in /home/zynres/Projects/sweet-log/libraries/sweetlib-collections/src/SweetLib.Benchmarks/bin/Release/net10.0/SweetLib.Benchmarks-Job-CNUJVU-1/SweetLib.Benchmarks-Job-CNUJVU-1.notcs:line 57
+// AfterAll
+No Workload Results were obtained from the run.
+// Benchmark Process 204522 has exited with code 255.
+
+// ** Remained 0 (0.0 %) benchmark(s) to run. Estimated finish 2026-08-31 21:32 (0h 0m from now) **
+// ***** BenchmarkRunner: Finish  *****
+
+// * Export *
+  BenchmarkDotNet.Artifacts/results/MpscBenchmark-report.csv
+  BenchmarkDotNet.Artifacts/results/MpscBenchmark-report-github.md
+  BenchmarkDotNet.Artifacts/results/MpscBenchmark-report.html
+
+// * Detailed results *
+MpscBenchmark.UnsafeConcurrentQueue: Job-CNUJVU(InvocationCount=1, UnrollFactor=1) [ProducerCount=1, ItemsPerProducer=100000]
+Runtime = .NET 10.0.11 (10.0.11, 42.42.42.42424), X64 RyuJIT x86-64-v3; GC = Concurrent Workstation
+There are not any results runs
+
+MpscBenchmark.UnsafeRingBuffer_MPSC: Job-CNUJVU(InvocationCount=1, UnrollFactor=1) [ProducerCount=1, ItemsPerProducer=100000]
+Runtime = .NET 10.0.11 (10.0.11, 42.42.42.42424), X64 RyuJIT x86-64-v3; GC = Concurrent Workstation
+There are not any results runs
+
+MpscBenchmark.SystemThreadingChannel_MPSC: Job-CNUJVU(InvocationCount=1, UnrollFactor=1) [ProducerCount=1, ItemsPerProducer=100000]
+Runtime = .NET 10.0.11 (10.0.11, 42.42.42.42424), X64 RyuJIT x86-64-v3; GC = Concurrent Workstation
+There are not any results runs
+
+MpscBenchmark.UnsafeConcurrentQueue: Job-CNUJVU(InvocationCount=1, UnrollFactor=1) [ProducerCount=4, ItemsPerProducer=100000]
+Runtime = .NET 10.0.11 (10.0.11, 42.42.42.42424), X64 RyuJIT x86-64-v3; GC = Concurrent Workstation
+There are not any results runs
+
+MpscBenchmark.UnsafeRingBuffer_MPSC: Job-CNUJVU(InvocationCount=1, UnrollFactor=1) [ProducerCount=4, ItemsPerProducer=100000]
+Runtime = .NET 10.0.11 (10.0.11, 42.42.42.42424), X64 RyuJIT x86-64-v3; GC = Concurrent Workstation
+There are not any results runs
+
+MpscBenchmark.SystemThreadingChannel_MPSC: Job-CNUJVU(InvocationCount=1, UnrollFactor=1) [ProducerCount=4, ItemsPerProducer=100000]
+Runtime = .NET 10.0.11 (10.0.11, 42.42.42.42424), X64 RyuJIT x86-64-v3; GC = Concurrent Workstation
+There are not any results runs
+
+MpscBenchmark.UnsafeConcurrentQueue: Job-CNUJVU(InvocationCount=1, UnrollFactor=1) [ProducerCount=8, ItemsPerProducer=100000]
+Runtime = .NET 10.0.11 (10.0.11, 42.42.42.42424), X64 RyuJIT x86-64-v3; GC = Concurrent Workstation
+There are not any results runs
+
+MpscBenchmark.UnsafeRingBuffer_MPSC: Job-CNUJVU(InvocationCount=1, UnrollFactor=1) [ProducerCount=8, ItemsPerProducer=100000]
+Runtime = .NET 10.0.11 (10.0.11, 42.42.42.42424), X64 RyuJIT x86-64-v3; GC = Concurrent Workstation
+There are not any results runs
+
+MpscBenchmark.SystemThreadingChannel_MPSC: Job-CNUJVU(InvocationCount=1, UnrollFactor=1) [ProducerCount=8, ItemsPerProducer=100000]
+Runtime = .NET 10.0.11 (10.0.11, 42.42.42.42424), X64 RyuJIT x86-64-v3; GC = Concurrent Workstation
+There are not any results runs
+
+// * Summary *
+
+BenchmarkDotNet v0.15.8, Linux Arch Linux
+12th Gen Intel Core i5-1235U 0.40GHz, 1 CPU, 12 logical and 10 physical cores
+.NET SDK 10.0.111
+  [Host]     : .NET 10.0.11 (10.0.11, 42.42.42.42424), X64 RyuJIT x86-64-v3
+  Job-CNUJVU : .NET 10.0.11 (10.0.11, 42.42.42.42424), X64 RyuJIT x86-64-v3
+
+InvocationCount=1  UnrollFactor=1  
+
+| Method                      | ProducerCount | ItemsPerProducer | Mean | Error |
+|---------------------------- |-------------- |----------------- |-----:|------:|
+| UnsafeConcurrentQueue       | 1             | 100000           |   NA |    NA |
+| UnsafeRingBuffer_MPSC       | 1             | 100000           |   NA |    NA |
+| SystemThreadingChannel_MPSC | 1             | 100000           |   NA |    NA |
+| UnsafeConcurrentQueue       | 4             | 100000           |   NA |    NA |
+| UnsafeRingBuffer_MPSC       | 4             | 100000           |   NA |    NA |
+| SystemThreadingChannel_MPSC | 4             | 100000           |   NA |    NA |
+| UnsafeConcurrentQueue       | 8             | 100000           |   NA |    NA |
+| UnsafeRingBuffer_MPSC       | 8             | 100000           |   NA |    NA |
+| SystemThreadingChannel_MPSC | 8             | 100000           |   NA |    NA |
+
+Benchmarks with issues:
+  MpscBenchmark.UnsafeConcurrentQueue: Job-CNUJVU(InvocationCount=1, UnrollFactor=1) [ProducerCount=1, ItemsPerProducer=100000]
+  MpscBenchmark.UnsafeRingBuffer_MPSC: Job-CNUJVU(InvocationCount=1, UnrollFactor=1) [ProducerCount=1, ItemsPerProducer=100000]
+  MpscBenchmark.SystemThreadingChannel_MPSC: Job-CNUJVU(InvocationCount=1, UnrollFactor=1) [ProducerCount=1, ItemsPerProducer=100000]
+  MpscBenchmark.UnsafeConcurrentQueue: Job-CNUJVU(InvocationCount=1, UnrollFactor=1) [ProducerCount=4, ItemsPerProducer=100000]
+  MpscBenchmark.UnsafeRingBuffer_MPSC: Job-CNUJVU(InvocationCount=1, UnrollFactor=1) [ProducerCount=4, ItemsPerProducer=100000]
+  MpscBenchmark.SystemThreadingChannel_MPSC: Job-CNUJVU(InvocationCount=1, UnrollFactor=1) [ProducerCount=4, ItemsPerProducer=100000]
+  MpscBenchmark.UnsafeConcurrentQueue: Job-CNUJVU(InvocationCount=1, UnrollFactor=1) [ProducerCount=8, ItemsPerProducer=100000]
+  MpscBenchmark.UnsafeRingBuffer_MPSC: Job-CNUJVU(InvocationCount=1, UnrollFactor=1) [ProducerCount=8, ItemsPerProducer=100000]
+  MpscBenchmark.SystemThreadingChannel_MPSC: Job-CNUJVU(InvocationCount=1, UnrollFactor=1) [ProducerCount=8, ItemsPerProducer=100000]
+
+// * Legends *
+  ProducerCount    : Value of the 'ProducerCount' parameter
+  ItemsPerProducer : Value of the 'ItemsPerProducer' parameter
+  Mean             : Arithmetic mean of all measurements
+  Error            : Half of 99.9% confidence interval
+  1 ns             : 1 Nanosecond (0.000000001 sec)
+
+// * Diagnostic Output - MemoryDiagnoser *
+
+
+// ***** BenchmarkRunner: End *****
+Run time: 00:00:00 (0.86 sec), executed benchmarks: 9
+
+Global total time: 00:00:10 (10.17 sec), executed benchmarks: 9
+// * Artifacts cleanup *
+Artifacts cleanup is finished

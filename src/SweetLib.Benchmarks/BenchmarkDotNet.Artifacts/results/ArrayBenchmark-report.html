@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8' />
+<title>ArrayBenchmark-20260831-193553</title>
+
+<style type="text/css">
+	table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
+	td, th { padding: 6px 13px; border: 1px solid #ddd; text-align: right; }
+	tr { background-color: #fff; border-top: 1px solid #ccc; }
+	tr:nth-child(even) { background: #f8f8f8; }
+</style>
+</head>
+<body>
+<pre><code>
+BenchmarkDotNet v0.15.8, Linux Arch Linux
+12th Gen Intel Core i5-1235U 0.40GHz, 1 CPU, 12 logical and 10 physical cores
+.NET SDK 10.0.111
+  [Host]     : .NET 10.0.11 (10.0.11, 42.42.42.42424), X64 RyuJIT x86-64-v3
+  DefaultJob : .NET 10.0.11 (10.0.11, 42.42.42.42424), X64 RyuJIT x86-64-v3
+</code></pre>
+<pre><code></code></pre>
+
+<table>
+<thead><tr><th>Method    </th><th>Count</th><th>Mean</th><th>Error</th><th>StdDev</th><th>Median</th><th>Gen0</th><th>Gen1</th><th>Gen2</th><th>Allocated</th>
+</tr>
+</thead><tbody><tr><td>Array_Read</td><td>10000000</td><td>5.453 ms</td><td>0.1140 ms</td><td>0.3363 ms</td><td>5.270 ms</td><td>390.6250</td><td>390.6250</td><td>390.6250</td><td>40000146 B</td>
+</tr><tr><td>UnsafeArray_Read</td><td>10000000</td><td>7.818 ms</td><td>0.0803 ms</td><td>0.0670 ms</td><td>7.804 ms</td><td>-</td><td>-</td><td>-</td><td>-</td>
+</tr></tbody></table>
+</body>
+</html>
