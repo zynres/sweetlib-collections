@@ -1,7 +1,7 @@
 // Copyright © 2026 Zynres.
 
-using System.Runtime.InteropServices;
 using SweetLib.Collections.Unsafe.List;
+using System.Runtime.InteropServices;
 
 namespace SweetLib.Collections.Unsafe.Array;
 
@@ -11,10 +11,10 @@ public unsafe struct UnsafeArray<T> where T : unmanaged
 
     public uint Length;
 
-    public UnsafeArray(uint capasity)
+    public UnsafeArray(uint capacity)
     {
-        Length = capasity;
-        Data = (T*)NativeMemory.Alloc((nuint)(sizeof(T) * capasity));
+        Length = capacity;
+        Data = (T*)NativeMemory.Alloc((nuint)(sizeof(T) * capacity));
     }
 
     public void Set(uint index, T value)

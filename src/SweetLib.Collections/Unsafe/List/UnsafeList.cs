@@ -1,7 +1,7 @@
 // Copyright © 2026 Zynres.
 
-using System.Runtime.InteropServices;
 using SweetLib.Collections.Unsafe.Array;
+using System.Runtime.InteropServices;
 
 namespace SweetLib.Collections.Unsafe.List;
 
