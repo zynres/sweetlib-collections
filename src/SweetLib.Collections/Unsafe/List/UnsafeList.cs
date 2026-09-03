@@ -99,6 +99,16 @@ public unsafe struct UnsafeList<T> where T : unmanaged
         map->Length = Length;
     }
 
+    public readonly Span<T> AsSpan() 
+    {
+        return new Span<T>(Data, (int)Length);
+    }
+
+    public readonly Span<T> AsWritableSpan()
+    {
+        return new Span<T>(Data + Length, (int)(Capacity - Length));
+    }
+
     public void Dispose()
     {
         if (Data != null)
