@@ -13,15 +13,17 @@ public unsafe struct UnsafeConcurrentQueue<T> where T : unmanaged
 
     public uint Write;
     public uint Read;
+    public uint Save;
 
     private readonly Lock _sync;
 
     public UnsafeConcurrentQueue(uint capacity)
     {
-        Read = 0;
-        Write = 0;
-        Length = 0;
         Capacity = Math.Max(2u, capacity);
+        Length = 0;
+        Write = 0;
+        Read = 0;
+        Save = 0;
 
         Data = (T*)NativeMemory.Alloc((nuint)(sizeof(T) * Capacity));
 
@@ -66,6 +68,54 @@ public unsafe struct UnsafeConcurrentQueue<T> where T : unmanaged
             Length--;
 
             return true;
+        }
+    }
+
+    public bool TryInQueue(out T value)
+    {
+        lock (_sync)
+        {
+            if (Save == Write)
+            {
+                value = default;
+                return false;
+            }
+
+            value = Data[Save];
+
+            Save++;
+
+            if (Save == Capacity)
+                Save = 0;
+
+            return true;
+        }
+    }
+
+    public void DeleteSaved(uint index)
+    {
+        lock (_sync)
+        {
+            index++;
+
+            uint count;
+
+            if (index >= Read)
+                count = index - Read;
+            else
+                count = Capacity - Read + index;
+
+            Read = index;
+            Length -= count;
+        }
+    }
+
+    public void SetReadLength(uint index, uint count) 
+    {
+        lock (_sync) 
+        {
+            Read = index;
+            Length -= Length;
         }
     }
 
