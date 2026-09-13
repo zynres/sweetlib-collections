@@ -4,7 +4,7 @@ using System.Text;
 namespace SweetLib.Collections.Unsafe.Text;
 
 public unsafe struct U8String : IEquatable<U8String>
-{ 
+{
     public byte* Data;
     public int Length;
 
