@@ -56,6 +56,11 @@ public unsafe struct UnsafeArray<T> where T : unmanaged
         map->Length = Length;
     }
 
+    public readonly Span<T> AsSpan()
+    {
+        return new Span<T>(Data, (int)Length);
+    }
+
     public void Dispose()
     {
         if (Data != null)
