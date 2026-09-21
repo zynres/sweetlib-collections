@@ -47,7 +47,7 @@ public unsafe struct UnsafeList<T> where T : unmanaged
         Length += values.Length;
     }
 
-    private void Resize(uint newCapacity)
+    public void Resize(uint newCapacity)
     {
         T* newData = (T*)NativeMemory.Alloc((nuint)(sizeof(T) * newCapacity));
 
@@ -99,7 +99,7 @@ public unsafe struct UnsafeList<T> where T : unmanaged
         map->Length = Length;
     }
 
-    public readonly Span<T> AsSpan() 
+    public readonly Span<T> AsSpan()
     {
         return new Span<T>(Data, (int)Length);
     }
