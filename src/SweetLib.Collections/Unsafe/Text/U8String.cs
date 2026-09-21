@@ -28,7 +28,7 @@ public unsafe struct U8String : IEquatable<U8String>
         Length = Encoding.UTF8.GetByteCount(text);
         Data = (byte*)NativeMemory.Alloc((nuint)Length);
 
-        fixed (byte* src = Encoding.UTF8.GetBytes(text))
+        fixed (char* src = text)
         {
             Buffer.MemoryCopy(
                 src,
