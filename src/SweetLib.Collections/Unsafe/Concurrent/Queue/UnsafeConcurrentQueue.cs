@@ -60,6 +60,8 @@ public unsafe struct UnsafeConcurrentQueue<T> where T : unmanaged
 
             value = Data[Read];
 
+            Data[Read] = default;
+
             Read++;
 
             if (Read == Capacity)
@@ -115,7 +117,7 @@ public unsafe struct UnsafeConcurrentQueue<T> where T : unmanaged
         lock (_sync) 
         {
             Read = index;
-            Length -= Length;
+            Length -= count;
         }
     }
 
