@@ -44,6 +44,12 @@ public unsafe struct U8String : IEquatable<U8String>
     public static implicit operator U8String(in string text) =>
         new(in text);
 
+    public static implicit operator U8String(in uint value) =>
+        new(value.ToString());
+
+    public static implicit operator U8String(in int value) =>
+        new(value.ToString());
+
     public override readonly bool Equals(object obj) =>
         obj is U8String other && Equals(other);
 
@@ -103,5 +109,26 @@ public unsafe struct U8String : IEquatable<U8String>
     public static bool operator !=(U8String left, U8String right)
     {
         return !(left == right);
+    }
+
+    public static U8String operator +(U8String left, U8String right)
+    {
+        int length = left.Length + right.Length;
+
+        byte* data = (byte*)NativeMemory.Alloc((nuint)length);
+
+        Buffer.MemoryCopy(left.Data, data, length, left.Length);
+
+        Buffer.MemoryCopy(
+            right.Data,
+            data + left.Length,
+            length - left.Length,
+            right.Length);
+
+        U8String result = default;
+        result.Data = data;
+        result.Length = length;
+
+        return result;
     }
 }
